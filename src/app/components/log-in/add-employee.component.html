@@ -1,0 +1,87 @@
+<div class="card">
+    <h4 class="card-header">Register</h4>
+    <h1 *ngIf="!isAddMode">add employee</h1>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Nama Lengkap</label>
+          <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Nama Lengkap Harus Diisi</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Nama Depan</label>
+          <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">Nama Depan Harus Diisi</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="LastName">Nama Belakang</label>
+          <input type="text" formControlName="LastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }" />
+          <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback">
+            <div *ngIf="f.LastName.errors.required">Nama Belakang Harus Diisi</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email Harus Diisi</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="birthDate">Tanggal Lahir</label>
+          <input type="date" formControlName="birthDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }" />
+          <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
+            <div *ngIf="f.birthDate.errors.required">Tanggal Lahir Harus Diisi</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="basicSalary">Basic Salary</label>
+          <input type="number" formControlName="basicSalary" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.basicSalary.errors }" />
+          <div *ngIf="submitted && f.basicSalary.errors" class="invalid-feedback">
+            <div *ngIf="f.basicSalary.errors.required">basicSalary Harus Diisi</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Status">Status</label>
+          <input type="text" formControlName="Status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Status.errors }" />
+          <div *ngIf="submitted && f.Status.errors" class="invalid-feedback">
+            <div *ngIf="f.Status.errors.required">Status Harus Diisi</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="remarks">Masukan Kemampuan Anda</label>
+          <select name="group" id="group">
+            <option value="test1">Volvo</option>
+            <option value="test2">Saab</option>
+            <option value="test3">Mercedes</option>
+            <option value="test4">Audi</option>
+            <option value="test5">Audi</option>
+            <option value="test6">Audi</option>
+            <option value="test7">Audi</option>
+            <option value="test8">Audi</option>
+            <option value="test9">Audi</option>
+            <option value="test10">Audi</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Deskripsi</label>
+            <textarea type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
+              <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">Email Harus Diisi</div>
+              </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            add
+          </button>
+          <a routerLink="../list" class="btn btn-link">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  

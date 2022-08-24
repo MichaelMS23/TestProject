@@ -1,0 +1,58 @@
+<h1>My Projects</h1>
+<a routerLink="../project/add" class="btn btn-sm btn-success mb-2">Add</a>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th style="width: 15%">Nama Depan</th>
+    <th style="width: 15%">Nama Belakang</th>
+    <th style="width: 15%">Email</th>
+    <th style="width: 15%">Birthdate</th>
+    <th style="width: 15%">Basic Salary</th>
+    <th style="width: 30%">Status</th>
+    <th style="width: 30%">Grup</th>
+    <th style="width: 30%">Deskripsi</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let project of pageOfItems">
+    <td>{{firstName}}</td>
+    <td>{{LastName}}</td>
+    <td>{{Email}}</td>
+    <td>{{birthDate}}</td>
+    <td>{{basicSalary}}</td>
+    <td>{{Status}}</td>
+    <td>{{Group}}</td>
+    <td>{{deskription}}</td>
+    <td style="white-space: nowrap">
+      <a routerLink="../project/edit/{{project._id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+      <button (click)="deleteProjects(project._id)" class="btn btn-sm btn-danger btn-delete-user">
+        Hapus
+      </button>
+    </td>
+  </tr>
+  <tr *ngIf="!projects">
+    <td colspan="4" class="text-center">
+      <span class="spinner-border spinner-border-lg align-center"></span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-center">
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
+      <a (click)="setPage(1)" class="page-link">First</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item previous-item">
+      <a (click)="setPage(pager.currentPage - 1)" class="page-link">Previous</a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item number-item">
+      <a (click)="setPage(page)" class="page-link">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item next-item">
+      <a (click)="setPage(pager.currentPage + 1)" class="page-link">Next</a>
+    </li>
+    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item last-item">
+      <a (click)="setPage(pager.totalPages)" class="page-link">Last</a>
+    </li>
+  </ul>
+</div>
